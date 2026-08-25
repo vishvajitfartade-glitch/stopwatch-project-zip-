@@ -1,172 +1,40 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A responsive stopwatch with start, pause, reset and lap functionality.">
+  <title>Stopwatch</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <section class="stopwatch-card" aria-labelledby="title">
+      <p class="eyebrow">LEVEL 2 • DAY 2</p>
+      <h1 id="title">Stopwatch</h1>
 
-:root {
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #172554;
-  background: #eef5ff;
-}
+      <div class="display" aria-live="polite">
+        <span id="time">00:00:00.00</span>
+      </div>
 
-body {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  background:
-    radial-gradient(circle at top left, #dbeafe 0, transparent 38%),
-    linear-gradient(135deg, #eff6ff, #f8fafc);
-}{}
+      <div class="controls" aria-label="Stopwatch controls">
+        <button id="startBtn" class="primary">Start</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="lapBtn">Lap</button>
+        <button id="resetBtn" class="danger">Reset</button>
+      </div>
 
-.app {
-  width: min(100%, 620px);
-}
+      <div class="laps-section">
+        <div class="laps-header">
+          <h2>Lap Times</h2>
+          <span id="lapCount">0 laps</span>
+        </div>
+        <ol id="laps" class="laps" aria-live="polite"></ol>
+        <p id="emptyMessage" class="empty">No laps recorded yet.</p>
+      </div>
+    </section>
+  </main>
 
-.stopwatch-card {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #dbe4f0;
-  border-radius: 28px;
-  padding: 36px;
-  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
-}
-
-.eyebrow {
-  color: #f97316;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-align: center;
-}
-
-h1 {
-  margin-top: 8px;
-  text-align: center;
-  font-size: clamp(2rem, 7vw, 3rem);
-}
-
-.display {
-  margin: 30px 0 24px;
-  padding: 28px 16px;
-  border-radius: 20px;
-  background: #0f172a;
-  color: #f8fafc;
-  text-align: center;
-  overflow-x: auto;
-}
-
-#time {
-  font-variant-numeric: tabular-nums;
-  font-size: clamp(2.5rem, 10vw, 4.5rem);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-}
-
-.controls {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-button {
-  border: 0;
-  border-radius: 12px;
-  padding: 13px 10px;
-  background: #e2e8f0;
-  color: #0f172a;
-  font: inherit;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
-}
-
-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  background: #cbd5e1;
-}
-
-button:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.45;
-}
-
-button.primary {
-  background: #2563eb;
-  color: white;
-}
-
-button.primary:hover:not(:disabled) {
-  background: #1d4ed8;
-}
-
-button.danger {
-  background: #fee2e2;
-  color: #b91c1c;
-}
-
-.laps-section {
-  margin-top: 30px;
-}
-
-.laps-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-h2 {
-  font-size: 1.1rem;
-}
-
-#lapCount {
-  color: #64748b;
-  font-size: 0.9rem;
-}
-
-.laps {
-  list-style: none;
-  max-height: 280px;
-  overflow-y: auto;
-}
-
-.laps li {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 13px 14px;
-  border-bottom: 1px solid #e2e8f0;
-  font-variant-numeric: tabular-nums;
-}
-
-.lap-number {
-  color: #64748b;
-}
-
-.lap-time {
-  font-weight: 700;
-}
-
-.empty {
-  padding: 18px;
-  text-align: center;
-  color: #94a3b8;
-  border: 1px dashed #cbd5e1;
-  border-radius: 12px;
-}
-
-@media (max-width: 520px) {
-  .stopwatch-card {
-    padding: 24px 18px;
-  }
-
-  .controls {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+  <script src="script.js"></script>
+</body>
+</html>
